@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Muhammad Lutfi Ramadhan</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .terminal-cursor {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .code-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        
+        .terminal-window {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .terminal-header {
+            background: #2d2d2d;
+            padding: 8px 12px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27ca3f; }
+        
+        .skill-tag {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid #22c55e;
+            color: #22c55e;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background: rgba(34, 197, 94, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .project-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            border-color: #22c55e;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.1);
+        }
+        
+        .nav-link {
+            color: #94a3b8;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: #22c55e;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #22c55e;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full code-bg text-white font-mono">
+  <main class="min-h-full"><!-- Navigation -->
+   <nav class="fixed top-0 w-full bg-slate-900/90 backdrop-blur-sm border-b border-slate-700 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-4">
+     <div class="flex justify-between items-center">
+      <div class="text-green-400 font-bold text-lg"><span class="text-white">&lt;</span>dev<span class="text-white">/&gt;</span>
+      </div>
+      <div class="hidden md:flex space-x-8"><a href="#home" class="nav-link">Home</a> <a href="#about" class="nav-link">About</a> <a href="#skills" class="nav-link">Skills</a> <a href="#projects" class="nav-link">Projects</a> <a href="#contact" class="nav-link">Contact</a>
+      </div>
+     </div>
+    </div>
+   </nav><!-- Hero Section -->
+   <section id="home" class="min-h-full flex items-center justify-center px-4 pt-20">
+    <div class="max-w-4xl mx-auto text-center">
+     <div class="terminal-window mb-8">
+      <div class="terminal-header">
+       <div class="terminal-dot dot-red"></div>
+       <div class="terminal-dot dot-yellow"></div>
+       <div class="terminal-dot dot-green"></div><span class="text-gray-400 text-sm ml-4">portfolio.js</span>
+      </div>
+      <div class="p-6 text-left">
+       <div class="text-gray-400 mb-2">
+        // Welcome to my portfolio
+       </div>
+       <div class="text-blue-400">
+        const <span class="text-white">developer</span> = {
+       </div>
+       <div class="ml-4 mt-2">
+        <div class="text-green-400">
+         name: <span class="text-yellow-300" id="nama-display">"John Doe"</span>,
+        </div>
+        <div class="text-green-400">
+         role: <span class="text-yellow-300" id="posisi-display">"Full Stack Developer"</span>,
+        </div>
+        <div class="text-green-400">
+         passion: <span class="text-yellow-300" id="tagline-display">"Building amazing web experiences"</span>
+        </div>
+       </div>
+       <div class="text-blue-400 mt-2">
+        };
+       </div>
+       <div class="mt-4 text-gray-400">
+        console.log("Hello World! 👋")<span class="terminal-cursor">|</span>
+       </div>
+      </div>
+     </div>
+     <div class="flex justify-center space-x-4"><button onclick="scrollToSection('projects')" class="bg-green-500 hover:bg-green-600 text-black px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"> View Projects </button> <button onclick="scrollToSection('contact')" class="border border-green-500 text-green-500 hover:bg-green-500 hover:text-black px-6 py-3 rounded-lg font-semibold transition-all duration-300"> Contact Me </button>
+     </div>
+    </div>
+   </section><!-- About Section -->
+   <section id="about" class="py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+     <h2 class="text-3xl font-bold text-center mb-12 text-green-400"><span class="text-gray-400">//</span> About Me</h2>
+     <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+       <div class="text-6xl mb-6">
+        👨‍💻
+       </div>
+       <p class="text-gray-300 leading-relaxed" id="tentang-display">Saya adalah seorang developer yang passionate dalam menciptakan solusi digital yang inovatif. Dengan pengalaman dalam berbagai teknologi web modern, saya selalu siap menghadapi tantangan baru dan terus belajar teknologi terbaru.</p>
+      </div>
+      <div class="terminal-window">
+       <div class="terminal-header">
+        <div class="terminal-dot dot-red"></div>
+        <div class="terminal-dot dot-yellow"></div>
+        <div class="terminal-dot dot-green"></div><span class="text-gray-400 text-sm ml-4">about.json</span>
+       </div>
+       <div class="p-4 text-sm">
+        <div class="text-blue-400">
+         {
+        </div>
+        <div class="ml-4">
+         <div class="text-green-400">
+          "experience": <span class="text-yellow-300">"1+ years"</span>,
+         </div>
+         <div class="text-green-400">
+          "location": <span class="text-yellow-300">"Indonesia"</span>,
+         </div>
+         <div class="text-green-400">
+          "status": <span class="text-yellow-300">"Available for work"</span>,
+         </div>
+         <div class="text-green-400">
+          "coffee_consumed": <span class="text-yellow-300">"∞"</span>
+         </div>
+        </div>
+        <div class="text-blue-400">
+         }
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Skills Section -->
+   <section id="skills" class="py-20 px-4 bg-slate-900/50">
+    <div class="max-w-4xl mx-auto">
+     <h2 class="text-3xl font-bold text-center mb-12 text-green-400"><span class="text-gray-400">//</span> Skills &amp; Technologies</h2>
+     <div class="grid md:grid-cols-3 gap-8">
+      <div>
+       <h3 class="text-xl font-semibold mb-4 text-blue-400">Frontend</h3>
+       <div class="flex flex-wrap gap-2"><span class="skill-tag">React</span> <span class="skill-tag">Vue.js</span> <span class="skill-tag">JavaScript</span> <span class="skill-tag">TypeScript</span> <span class="skill-tag">HTML5</span> <span class="skill-tag">CSS3</span> <span class="skill-tag">Tailwind</span>
+       </div>
+      </div>
+      <div>
+       <h3 class="text-xl font-semibold mb-4 text-blue-400">Backend</h3>
+       <div class="flex flex-wrap gap-2"><span class="skill-tag">Node.js</span> <span class="skill-tag">Python</span> <span class="skill-tag">PHP</span> <span class="skill-tag">Express</span> <span class="skill-tag">Laravel</span> <span class="skill-tag">MongoDB</span> <span class="skill-tag">MySQL</span>
+       </div>
+      </div>
+      <div>
+       <h3 class="text-xl font-semibold mb-4 text-blue-400">Tools</h3>
+       <div class="flex flex-wrap gap-2"><span class="skill-tag">Git</span> <span class="skill-tag">Docker</span> <span class="skill-tag">VS Code</span> <span class="skill-tag">Figma</span> <span class="skill-tag">Postman</span> <span class="skill-tag">AWS</span> <span class="skill-tag">Vercel</span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Projects Section -->
+   <section id="projects" class="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+     <h2 class="text-3xl font-bold text-center mb-12 text-green-400"><span class="text-gray-400">//</span> Featured Projects</h2>
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="project-card">
+       <div class="flex items-center justify-between mb-4">
+        <h3 class="text-xl font-semibold text-white">E-Commerce App</h3>
+        <div class="text-2xl">
+         🛒
+        </div>
+       </div>
+       <p class="text-gray-400 mb-4">Full-stack e-commerce application dengan React dan Node.js. Fitur lengkap termasuk payment gateway dan admin dashboard.</p>
+       <div class="flex flex-wrap gap-2 mb-4"><span class="skill-tag text-xs">React</span> <span class="skill-tag text-xs">Node.js</span> <span class="skill-tag text-xs">MongoDB</span>
+       </div>
+       <div class="flex space-x-4"><a href="#" class="text-green-400 hover:text-green-300 transition-colors">Live Demo</a> <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors">GitHub</a>
+       </div>
+      </div>
+      <div class="project-card">
+       <div class="flex items-center justify-between mb-4">
+        <h3 class="text-xl font-semibold text-white">Task Manager</h3>
+        <div class="text-2xl">
+         📋
+        </div>
+       </div>
+       <p class="text-gray-400 mb-4">Aplikasi manajemen tugas dengan fitur real-time collaboration menggunakan Socket.io dan Vue.js.</p>
+       <div class="flex flex-wrap gap-2 mb-4"><span class="skill-tag text-xs">Vue.js</span> <span class="skill-tag text-xs">Socket.io</span> <span class="skill-tag text-xs">Express</span>
+       </div>
+       <div class="flex space-x-4"><a href="#" class="text-green-400 hover:text-green-300 transition-colors">Live Demo</a> <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors">GitHub</a>
+       </div>
+      </div>
+      <div class="project-card">
+       <div class="flex items-center justify-between mb-4">
+        <h3 class="text-xl font-semibold text-white">Weather App</h3>
+        <div class="text-2xl">
+         🌤️
+        </div>
+       </div>
+       <p class="text-gray-400 mb-4">Aplikasi cuaca dengan design yang clean dan responsive. Menggunakan API eksternal dan local storage.</p>
+       <div class="flex flex-wrap gap-2 mb-4"><span class="skill-tag text-xs">JavaScript</span> <span class="skill-tag text-xs">API</span> <span class="skill-tag text-xs">CSS3</span>
+       </div>
+       <div class="flex space-x-4"><a href="#" class="text-green-400 hover:text-green-300 transition-colors">Live Demo</a> <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors">GitHub</a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contact" class="py-20 px-4 bg-slate-900/50">
+    <div class="max-w-4xl mx-auto text-center">
+     <h2 class="text-3xl font-bold mb-12 text-green-400"><span class="text-gray-400">//</span> Let's Connect</h2>
+     <div class="terminal-window max-w-2xl mx-auto">
+      <div class="terminal-header">
+       <div class="terminal-dot dot-red"></div>
+       <div class="terminal-dot dot-yellow"></div>
+       <div class="terminal-dot dot-green"></div><span class="text-gray-400 text-sm ml-4">contact.js</span>
+      </div>
+      <div class="p-6 text-left">
+       <div class="text-gray-400 mb-2">
+        // Get in touch
+       </div>
+       <div class="text-blue-400">
+        const <span class="text-white">contact</span> = {
+       </div>
+       <div class="ml-4 mt-2 space-y-2">
+        <div class="text-green-400">
+         email: <span class="text-yellow-300" id="email-display">"usmelarh@gmail.com"</span>,
+        </div>
+        <div class="text-green-400">
+         github: <span class="text-yellow-300" id="github-display">"github.com/Xyress-11"</span>,
+        </div>
+        <div class="text-green-400">
+         Instagram: <span class="text-yellow-300" id="linkedin-display">"instagram.com/@maanotkul"</span>
+        </div>
+       </div>
+       <div class="text-blue-400 mt-2">
+        };
+       </div>
+      </div>
+     </div>
+     <div class="flex justify-center space-x-6 mt-8"><a href="usmelarh@gmail.com" id="email-link" class="bg-green-500 hover:bg-green-600 text-black px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"> 📧 Email </a> <a href="https://github.com/Xyress-11" id="github-link" target="_blank" rel="noopener noreferrer" class="border border-green-500 text-green-500 hover:bg-green-500 hover:text-black px-6 py-3 rounded-lg font-semibold transition-all duration-300"> 🐙 GitHub </a> <a href="instagram.com/maanotkul" id="instagram-link" target="_blank" rel="noopener noreferrer" class="border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-black px-6 py-3 rounded-lg font-semibold transition-all duration-300"> 💼 Instagram </a>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="py-8 px-4 border-t border-slate-700">
+    <div class="max-w-4xl mx-auto text-center">
+     <p class="text-gray-400"><span class="text-green-400">© 2025</span> <span id="footer-nama">John Doe</span>. Made with <span class="text-red-500">❤️</span> and lots of ☕</p>
+    </div>
+   </footer>
+  </main>
+  <script>
+        // Default configuration
+        const defaultConfig = {
+            nama_lengkap: "Muhammad Lutfi Ramadhan",
+            posisi: "Programmer / Network Engginer", 
+            tagline: "Building amazing web experiences",
+            tentang_saya: "Saya adalah seorang developer yang passionate dalam menciptakan solusi digital yang inovatif. Dengan pengalaman dalam berbagai teknologi web modern, saya selalu siap menghadapi tantangan baru dan terus belajar teknologi terbaru.",
+            email: "usmelarh@gmail.com",
+            github: "Xyress-11",
+            instagram: "@maanokul",
+            background_color: "#0f172a",
+            surface_color: "#1e293b", 
+            text_color: "#ffffff",
+            primary_color: "#22c55e",
+            secondary_color: "#3b82f6",
+            font_family: "JetBrains Mono",
+            font_size: 16
+        };
+
+        // Smooth scrolling function
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Update UI based on config
+        async function onConfigChange(config) {
+            const currentConfig = { ...defaultConfig, ...config };
+            
+            // Update text content
+            document.getElementById('nama-display').textContent = `"${currentConfig.nama_lengkap}"`;
+            document.getElementById('posisi-display').textContent = `"${currentConfig.posisi}"`;
+            document.getElementById('tagline-display').textContent = `"${currentConfig.tagline}"`;
+            document.getElementById('tentang-display').textContent = currentConfig.tentang_saya;
+            document.getElementById('email-display').textContent = `"${currentConfig.email}"`;
+            document.getElementById('github-display').textContent = `"github.com/${currentConfig.github}"`;
+            document.getElementById('linkedin-display').textContent = `"instagram.com/${currentConfig.instagram}"`;
+            document.getElementById('footer-nama').textContent = currentConfig.nama_lengkap;
+            
+            // Update contact links
+            document.getElementById('email-link').href = `mailto:${currentConfig.email}`;
+            document.getElementById('github-link').href = `https://github.com/${currentConfig.github}`;
+            document.getElementById('instagram-link').href = `https://instagram.com/${currentConfig.instagram}`;
+            
+            // Apply colors
+            document.body.style.background = `linear-gradient(135deg, ${currentConfig.background_color} 0%, ${currentConfig.surface_color} 100%)`;
+            document.body.style.color = currentConfig.text_color;
+            
+            // Update primary color elements
+            const primaryElements = document.querySelectorAll('.text-green-400, .border-green-500, .bg-green-500');
+            primaryElements.forEach(el => {
+                if (el.classList.contains('text-green-400')) {
+                    el.style.color = currentConfig.primary_color;
+                }
+                if (el.classList.contains('border-green-500')) {
+                    el.style.borderColor = currentConfig.primary_color;
+                }
+                if (el.classList.contains('bg-green-500')) {
+                    el.style.backgroundColor = currentConfig.primary_color;
+                }
+            });
+            
+            // Apply font family
+            const customFont = currentConfig.font_family || defaultConfig.font_family;
+            const baseFontStack = 'monospace';
+            document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+            
+            // Apply font size scaling
+            const baseSize = currentConfig.font_size || defaultConfig.font_size;
+            document.documentElement.style.fontSize = `${baseSize}px`;
+        }
+
+        // Initialize Element SDK
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig: defaultConfig,
+                onConfigChange: onConfigChange,
+                mapToCapabilities: (config) => ({
+                    recolorables: [
+                        {
+                            get: () => config.background_color || defaultConfig.background_color,
+                            set: (value) => {
+                                config.background_color = value;
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.surface_color || defaultConfig.surface_color,
+                            set: (value) => {
+                                config.surface_color = value;
+                                window.elementSdk.setConfig({ surface_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.text_color || defaultConfig.text_color,
+                            set: (value) => {
+                                config.text_color = value;
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.primary_color || defaultConfig.primary_color,
+                            set: (value) => {
+                                config.primary_color = value;
+                                window.elementSdk.setConfig({ primary_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.secondary_color || defaultConfig.secondary_color,
+                            set: (value) => {
+                                config.secondary_color = value;
+                                window.elementSdk.setConfig({ secondary_color: value });
+                            }
+                        }
+                    ],
+                    borderables: [],
+                    fontEditable: {
+                        get: () => config.font_family || defaultConfig.font_family,
+                        set: (value) => {
+                            config.font_family = value;
+                            window.elementSdk.setConfig({ font_family: value });
+                        }
+                    },
+                    fontSizeable: {
+                        get: () => config.font_size || defaultConfig.font_size,
+                        set: (value) => {
+                            config.font_size = value;
+                            window.elementSdk.setConfig({ font_size: value });
+                        }
+                    }
+                }),
+                mapToEditPanelValues: (config) => new Map([
+                    ["nama_lengkap", config.nama_lengkap || defaultConfig.nama_lengkap],
+                    ["posisi", config.posisi || defaultConfig.posisi],
+                    ["tagline", config.tagline || defaultConfig.tagline],
+                    ["tentang_saya", config.tentang_saya || defaultConfig.tentang_saya],
+                    ["email", config.email || defaultConfig.email],
+                    ["github", config.github || defaultConfig.github],
+                    ["instagram", config.instagram || defaultConfig.instagram]
+                ])
+            });
+        }
+
+        // Initialize with default config
+        onConfigChange(defaultConfig);
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99e4493ef386c6e5',t:'MTc2MzEwMDAwMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
